@@ -1,0 +1,6 @@
+namespace TOP4HoneyChains.HoneyProductionApi.Areas.HelpPage.ModelDescriptions
+{
+    public class SimpleTypeModelDescription : ModelDescription
+    {
+    }
+}

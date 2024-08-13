@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{85A173F8-E99C-41F2-A98F-23C7D4E3AF52}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TOP4HoneyChains.Entities</RootNamespace>
+    <AssemblyName>TOP4HoneyChains.Entities</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Apiary.cs">
+      <DependentUpon>TOP4HoneyChainsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApiaryBeehive.cs">
+      <DependentUpon>TOP4HoneyChainsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApiaryBeehiveDiseas.cs">
+      <DependentUpon>TOP4HoneyChainsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApiaryBeehivesFeedingProgram.cs">
+      <DependentUpon>TOP4HoneyChainsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApiaryHoneyProduction.cs">
+      <DependentUpon>TOP4HoneyChainsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BeehiveBuildingMaterial.cs">
+      <DependentUpon>TOP4HoneyChainsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BeehiveDiseas.cs">
+      <DependentUpon>TOP4HoneyChainsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BeehiveLocationType.cs">
+      <DependentUpon>TOP4HoneyChainsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BeehiveType.cs">
+      <DependentUpon>TOP4HoneyChainsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Beekeeper.cs">
+      <DependentUpon>TOP4HoneyChainsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BeekeepingPurposeType.cs">
+      <DependentUpon>TOP4HoneyChainsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BeekeepingType.cs">
+      <DependentUpon>TOP4HoneyChainsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EducationLevel.cs">
+      <DependentUpon>TOP4HoneyChainsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FeedingMaterial.cs">
+      <DependentUpon>TOP4HoneyChainsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HoneyDistributionType.cs">
+      <DependentUpon>TOP4HoneyChainsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HoneyTest.cs">
+      <DependentUpon>TOP4HoneyChainsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HoneyTestItem.cs">
+      <DependentUpon>TOP4HoneyChainsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HoneyType.cs">
+      <DependentUpon>TOP4HoneyChainsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductionPeriod.cs">
+      <DependentUpon>TOP4HoneyChainsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TOP4HoneyChainsModels.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TOP4HoneyChainsModels.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOP4HoneyChainsModels.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TOP4HoneyChainsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOP4HoneyChainsModels.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TOP4HoneyChainsModels.edmx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="TOP4HoneyChainsModels.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TOP4HoneyChainsModels.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <None Include="TOP4HoneyChainsModels.edmx.diagram">
+      <DependentUpon>TOP4HoneyChainsModels.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TOP4HoneyChainsModels.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TOP4HoneyChainsModels.Context.cs</LastGenOutput>
+      <DependentUpon>TOP4HoneyChainsModels.edmx</DependentUpon>
+    </Content>
+    <Content Include="TOP4HoneyChainsModels.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TOP4HoneyChainsModels.edmx</DependentUpon>
+      <LastGenOutput>TOP4HoneyChainsModels.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

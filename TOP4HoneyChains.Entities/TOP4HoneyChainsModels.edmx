@@ -1,0 +1,613 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TOP4HoneyChainsDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Apiaries">
+          <Key>
+            <PropertyRef Name="ApiaryId" />
+          </Key>
+          <Property Name="ApiaryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BeekeeperId" Type="uniqueidentifier" />
+          <Property Name="ApiaryIdentityNumber" Type="varchar" MaxLength="50" />
+          <Property Name="ApiaryTitle" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NumberOfBeehives" Type="smallint" Nullable="false" />
+          <Property Name="LocationLatitude" Type="decimal" Precision="12" Scale="9" />
+          <Property Name="LocationLongitude" Type="decimal" Precision="12" Scale="9" />
+          <Property Name="LocationType" Type="int" />
+        </EntityType>
+        <EntityType Name="ApiaryBeehiveDiseases">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DiseaseId" Type="int" />
+          <Property Name="BeehiveId" Type="int" />
+          <Property Name="BeehiveCode" Type="varchar" MaxLength="50" />
+          <Property Name="ProductionPeriodId" Type="int" />
+          <Property Name="TreatmentMethods" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="ApiaryBeehives">
+          <Key>
+            <PropertyRef Name="BeehiveId" />
+          </Key>
+          <Property Name="BeehiveId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApiaryId" Type="int" />
+          <Property Name="BeehiveBarcode" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="BeehiveType" Type="int" />
+          <Property Name="BeehiveBuildingMaterial" Type="int" />
+          <Property Name="BeehiveTechnologyInfrastructure" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="ApiaryBeehivesFeedingPrograms">
+          <Key>
+            <PropertyRef Name="FeedingProgramId" />
+          </Key>
+          <Property Name="FeedingProgramId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FeedingMaterialId" Type="int" />
+          <Property Name="FeedingDate" Type="date" />
+          <Property Name="BeehiveId" Type="int" />
+          <Property Name="BeehiveCode" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ApiaryHoneyProductions">
+          <Key>
+            <PropertyRef Name="ProductionId" />
+          </Key>
+          <Property Name="ProductionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApiaryId" Type="int" />
+          <Property Name="ProductionPeriodId" Type="int" />
+          <Property Name="ProducedHoneyType" Type="int" />
+          <Property Name="HoneyDistributionType" Type="int" />
+          <Property Name="ProductionAmount" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="ProductionDate" Type="date" />
+        </EntityType>
+        <EntityType Name="BeehiveBuildingMaterials">
+          <Key>
+            <PropertyRef Name="MaterialId" />
+          </Key>
+          <Property Name="MaterialId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaterialTitle" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BeehiveDiseases">
+          <Key>
+            <PropertyRef Name="DiseaseId" />
+          </Key>
+          <Property Name="DiseaseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DiseaseTitle" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BeehiveLocationTypes">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeTitle" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BeehiveTypes">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeTitle" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Beekeepers">
+          <Key>
+            <PropertyRef Name="BeekeeperId" />
+          </Key>
+          <Property Name="BeekeeperId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdentityNumber" Type="varchar" MaxLength="50" />
+          <Property Name="BirthDate" Type="date" Nullable="false" />
+          <Property Name="ExperienceTime" Type="smallint" />
+          <Property Name="EducationLevel" Type="int" />
+          <Property Name="CertificationInfo" Type="bit" />
+          <Property Name="AssociationMembership" Type="varchar" MaxLength="75" />
+          <Property Name="BusinessNumber" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="BeekeepingPurposeType" Type="int" />
+          <Property Name="BeekeepingType" Type="int" />
+        </EntityType>
+        <EntityType Name="BeekeepingPurposeTypes">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeTitle" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BeekeepingTypes">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeTitle" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EducationLevels">
+          <Key>
+            <PropertyRef Name="LevelId" />
+          </Key>
+          <Property Name="LevelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LevelTitle" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FeedingMaterials">
+          <Key>
+            <PropertyRef Name="FeedingMaterialId" />
+          </Key>
+          <Property Name="FeedingMaterialId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FeedingMaterialTitle" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HoneyDistributionTypes">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeTitle" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HoneyTestItems">
+          <Key>
+            <PropertyRef Name="HoneyTestItemId" />
+          </Key>
+          <Property Name="HoneyTestItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HoneyTestItemTitle" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="HoneyTestItemUnit" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HoneyTests">
+          <Key>
+            <PropertyRef Name="HoneyTestId" />
+          </Key>
+          <Property Name="HoneyTestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApiaryId" Type="int" />
+          <Property Name="HoneyTestItemId" Type="int" />
+          <Property Name="HoneyTestItemValue" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="HoneyTypes">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeTitle" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductionPeriods">
+          <Key>
+            <PropertyRef Name="ProductionPeriodId" />
+          </Key>
+          <Property Name="ProductionPeriodId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductionPeriodTitle" Type="varchar" MaxLength="50" />
+          <Property Name="ProductionPeriodStartDate" Type="date" />
+          <Property Name="ProductionPeriodEndDate" Type="date" />
+        </EntityType>
+        <EntityContainer Name="TOP4HoneyChainsDbModelStoreContainer">
+          <EntitySet Name="Apiaries" EntityType="Self.Apiaries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApiaryBeehiveDiseases" EntityType="Self.ApiaryBeehiveDiseases" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApiaryBeehives" EntityType="Self.ApiaryBeehives" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApiaryBeehivesFeedingPrograms" EntityType="Self.ApiaryBeehivesFeedingPrograms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApiaryHoneyProductions" EntityType="Self.ApiaryHoneyProductions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BeehiveBuildingMaterials" EntityType="Self.BeehiveBuildingMaterials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BeehiveDiseases" EntityType="Self.BeehiveDiseases" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BeehiveLocationTypes" EntityType="Self.BeehiveLocationTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BeehiveTypes" EntityType="Self.BeehiveTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Beekeepers" EntityType="Self.Beekeepers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BeekeepingPurposeTypes" EntityType="Self.BeekeepingPurposeTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BeekeepingTypes" EntityType="Self.BeekeepingTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EducationLevels" EntityType="Self.EducationLevels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FeedingMaterials" EntityType="Self.FeedingMaterials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HoneyDistributionTypes" EntityType="Self.HoneyDistributionTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HoneyTestItems" EntityType="Self.HoneyTestItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HoneyTests" EntityType="Self.HoneyTests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HoneyTypes" EntityType="Self.HoneyTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductionPeriods" EntityType="Self.ProductionPeriods" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TOP4HoneyChainsDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Apiary">
+          <Key>
+            <PropertyRef Name="ApiaryId" />
+          </Key>
+          <Property Name="ApiaryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BeekeeperId" Type="Guid" />
+          <Property Name="ApiaryIdentityNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApiaryTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NumberOfBeehives" Type="Int16" Nullable="false" />
+          <Property Name="LocationLatitude" Type="Decimal" Precision="12" Scale="9" />
+          <Property Name="LocationLongitude" Type="Decimal" Precision="12" Scale="9" />
+          <Property Name="LocationType" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ApiaryBeehiveDiseas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DiseaseId" Type="Int32" />
+          <Property Name="BeehiveId" Type="Int32" />
+          <Property Name="BeehiveCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductionPeriodId" Type="Int32" />
+          <Property Name="TreatmentMethods" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ApiaryBeehive">
+          <Key>
+            <PropertyRef Name="BeehiveId" />
+          </Key>
+          <Property Name="BeehiveId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApiaryId" Type="Int32" />
+          <Property Name="BeehiveBarcode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BeehiveType" Type="Int32" />
+          <Property Name="BeehiveBuildingMaterial" Type="Int32" />
+          <Property Name="BeehiveTechnologyInfrastructure" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ApiaryBeehivesFeedingProgram">
+          <Key>
+            <PropertyRef Name="FeedingProgramId" />
+          </Key>
+          <Property Name="FeedingProgramId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FeedingMaterialId" Type="Int32" />
+          <Property Name="FeedingDate" Type="DateTime" Precision="0" />
+          <Property Name="BeehiveId" Type="Int32" />
+          <Property Name="BeehiveCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ApiaryHoneyProduction">
+          <Key>
+            <PropertyRef Name="ProductionId" />
+          </Key>
+          <Property Name="ProductionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApiaryId" Type="Int32" />
+          <Property Name="ProductionPeriodId" Type="Int32" />
+          <Property Name="ProducedHoneyType" Type="Int32" />
+          <Property Name="HoneyDistributionType" Type="Int32" />
+          <Property Name="ProductionAmount" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="ProductionDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="BeehiveBuildingMaterial">
+          <Key>
+            <PropertyRef Name="MaterialId" />
+          </Key>
+          <Property Name="MaterialId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaterialTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BeehiveDiseas">
+          <Key>
+            <PropertyRef Name="DiseaseId" />
+          </Key>
+          <Property Name="DiseaseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DiseaseTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BeehiveLocationType">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BeehiveType">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Beekeeper">
+          <Key>
+            <PropertyRef Name="BeekeeperId" />
+          </Key>
+          <Property Name="BeekeeperId" Type="Guid" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdentityNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ExperienceTime" Type="Int16" />
+          <Property Name="EducationLevel" Type="Int32" />
+          <Property Name="CertificationInfo" Type="Boolean" />
+          <Property Name="AssociationMembership" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="BusinessNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BeekeepingPurposeType" Type="Int32" />
+          <Property Name="BeekeepingType" Type="Int32" />
+        </EntityType>
+        <EntityType Name="BeekeepingPurposeType">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BeekeepingType">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EducationLevel">
+          <Key>
+            <PropertyRef Name="LevelId" />
+          </Key>
+          <Property Name="LevelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LevelTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FeedingMaterial">
+          <Key>
+            <PropertyRef Name="FeedingMaterialId" />
+          </Key>
+          <Property Name="FeedingMaterialId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FeedingMaterialTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HoneyDistributionType">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HoneyTestItem">
+          <Key>
+            <PropertyRef Name="HoneyTestItemId" />
+          </Key>
+          <Property Name="HoneyTestItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HoneyTestItemTitle" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HoneyTestItemUnit" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HoneyTest">
+          <Key>
+            <PropertyRef Name="HoneyTestId" />
+          </Key>
+          <Property Name="HoneyTestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApiaryId" Type="Int32" />
+          <Property Name="HoneyTestItemId" Type="Int32" />
+          <Property Name="HoneyTestItemValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="HoneyType">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductionPeriod">
+          <Key>
+            <PropertyRef Name="ProductionPeriodId" />
+          </Key>
+          <Property Name="ProductionPeriodId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductionPeriodTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductionPeriodStartDate" Type="DateTime" Precision="0" />
+          <Property Name="ProductionPeriodEndDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityContainer Name="TOP4HoneyChainsDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Apiaries" EntityType="Self.Apiary" />
+          <EntitySet Name="ApiaryBeehiveDiseases" EntityType="Self.ApiaryBeehiveDiseas" />
+          <EntitySet Name="ApiaryBeehives" EntityType="Self.ApiaryBeehive" />
+          <EntitySet Name="ApiaryBeehivesFeedingPrograms" EntityType="Self.ApiaryBeehivesFeedingProgram" />
+          <EntitySet Name="ApiaryHoneyProductions" EntityType="Self.ApiaryHoneyProduction" />
+          <EntitySet Name="BeehiveBuildingMaterials" EntityType="Self.BeehiveBuildingMaterial" />
+          <EntitySet Name="BeehiveDiseases" EntityType="Self.BeehiveDiseas" />
+          <EntitySet Name="BeehiveLocationTypes" EntityType="Self.BeehiveLocationType" />
+          <EntitySet Name="BeehiveTypes" EntityType="Self.BeehiveType" />
+          <EntitySet Name="Beekeepers" EntityType="Self.Beekeeper" />
+          <EntitySet Name="BeekeepingPurposeTypes" EntityType="Self.BeekeepingPurposeType" />
+          <EntitySet Name="BeekeepingTypes" EntityType="Self.BeekeepingType" />
+          <EntitySet Name="EducationLevels" EntityType="Self.EducationLevel" />
+          <EntitySet Name="FeedingMaterials" EntityType="Self.FeedingMaterial" />
+          <EntitySet Name="HoneyDistributionTypes" EntityType="Self.HoneyDistributionType" />
+          <EntitySet Name="HoneyTestItems" EntityType="Self.HoneyTestItem" />
+          <EntitySet Name="HoneyTests" EntityType="Self.HoneyTest" />
+          <EntitySet Name="HoneyTypes" EntityType="Self.HoneyType" />
+          <EntitySet Name="ProductionPeriods" EntityType="Self.ProductionPeriod" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TOP4HoneyChainsDbModelStoreContainer" CdmEntityContainer="TOP4HoneyChainsDbEntities">
+          <EntitySetMapping Name="Apiaries">
+            <EntityTypeMapping TypeName="TOP4HoneyChainsDbModel.Apiary">
+              <MappingFragment StoreEntitySet="Apiaries">
+                <ScalarProperty Name="ApiaryId" ColumnName="ApiaryId" />
+                <ScalarProperty Name="BeekeeperId" ColumnName="BeekeeperId" />
+                <ScalarProperty Name="ApiaryIdentityNumber" ColumnName="ApiaryIdentityNumber" />
+                <ScalarProperty Name="ApiaryTitle" ColumnName="ApiaryTitle" />
+                <ScalarProperty Name="NumberOfBeehives" ColumnName="NumberOfBeehives" />
+                <ScalarProperty Name="LocationLatitude" ColumnName="LocationLatitude" />
+                <ScalarProperty Name="LocationLongitude" ColumnName="LocationLongitude" />
+                <ScalarProperty Name="LocationType" ColumnName="LocationType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApiaryBeehiveDiseases">
+            <EntityTypeMapping TypeName="TOP4HoneyChainsDbModel.ApiaryBeehiveDiseas">
+              <MappingFragment StoreEntitySet="ApiaryBeehiveDiseases">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DiseaseId" ColumnName="DiseaseId" />
+                <ScalarProperty Name="BeehiveId" ColumnName="BeehiveId" />
+                <ScalarProperty Name="BeehiveCode" ColumnName="BeehiveCode" />
+                <ScalarProperty Name="ProductionPeriodId" ColumnName="ProductionPeriodId" />
+                <ScalarProperty Name="TreatmentMethods" ColumnName="TreatmentMethods" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApiaryBeehives">
+            <EntityTypeMapping TypeName="TOP4HoneyChainsDbModel.ApiaryBeehive">
+              <MappingFragment StoreEntitySet="ApiaryBeehives">
+                <ScalarProperty Name="BeehiveId" ColumnName="BeehiveId" />
+                <ScalarProperty Name="ApiaryId" ColumnName="ApiaryId" />
+                <ScalarProperty Name="BeehiveBarcode" ColumnName="BeehiveBarcode" />
+                <ScalarProperty Name="BeehiveType" ColumnName="BeehiveType" />
+                <ScalarProperty Name="BeehiveBuildingMaterial" ColumnName="BeehiveBuildingMaterial" />
+                <ScalarProperty Name="BeehiveTechnologyInfrastructure" ColumnName="BeehiveTechnologyInfrastructure" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApiaryBeehivesFeedingPrograms">
+            <EntityTypeMapping TypeName="TOP4HoneyChainsDbModel.ApiaryBeehivesFeedingProgram">
+              <MappingFragment StoreEntitySet="ApiaryBeehivesFeedingPrograms">
+                <ScalarProperty Name="FeedingProgramId" ColumnName="FeedingProgramId" />
+                <ScalarProperty Name="FeedingMaterialId" ColumnName="FeedingMaterialId" />
+                <ScalarProperty Name="FeedingDate" ColumnName="FeedingDate" />
+                <ScalarProperty Name="BeehiveId" ColumnName="BeehiveId" />
+                <ScalarProperty Name="BeehiveCode" ColumnName="BeehiveCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApiaryHoneyProductions">
+            <EntityTypeMapping TypeName="TOP4HoneyChainsDbModel.ApiaryHoneyProduction">
+              <MappingFragment StoreEntitySet="ApiaryHoneyProductions">
+                <ScalarProperty Name="ProductionId" ColumnName="ProductionId" />
+                <ScalarProperty Name="ApiaryId" ColumnName="ApiaryId" />
+                <ScalarProperty Name="ProductionPeriodId" ColumnName="ProductionPeriodId" />
+                <ScalarProperty Name="ProducedHoneyType" ColumnName="ProducedHoneyType" />
+                <ScalarProperty Name="HoneyDistributionType" ColumnName="HoneyDistributionType" />
+                <ScalarProperty Name="ProductionAmount" ColumnName="ProductionAmount" />
+                <ScalarProperty Name="ProductionDate" ColumnName="ProductionDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BeehiveBuildingMaterials">
+            <EntityTypeMapping TypeName="TOP4HoneyChainsDbModel.BeehiveBuildingMaterial">
+              <MappingFragment StoreEntitySet="BeehiveBuildingMaterials">
+                <ScalarProperty Name="MaterialId" ColumnName="MaterialId" />
+                <ScalarProperty Name="MaterialTitle" ColumnName="MaterialTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BeehiveDiseases">
+            <EntityTypeMapping TypeName="TOP4HoneyChainsDbModel.BeehiveDiseas">
+              <MappingFragment StoreEntitySet="BeehiveDiseases">
+                <ScalarProperty Name="DiseaseId" ColumnName="DiseaseId" />
+                <ScalarProperty Name="DiseaseTitle" ColumnName="DiseaseTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BeehiveLocationTypes">
+            <EntityTypeMapping TypeName="TOP4HoneyChainsDbModel.BeehiveLocationType">
+              <MappingFragment StoreEntitySet="BeehiveLocationTypes">
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="TypeTitle" ColumnName="TypeTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BeehiveTypes">
+            <EntityTypeMapping TypeName="TOP4HoneyChainsDbModel.BeehiveType">
+              <MappingFragment StoreEntitySet="BeehiveTypes">
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="TypeTitle" ColumnName="TypeTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Beekeepers">
+            <EntityTypeMapping TypeName="TOP4HoneyChainsDbModel.Beekeeper">
+              <MappingFragment StoreEntitySet="Beekeepers">
+                <ScalarProperty Name="BeekeeperId" ColumnName="BeekeeperId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="IdentityNumber" ColumnName="IdentityNumber" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="ExperienceTime" ColumnName="ExperienceTime" />
+                <ScalarProperty Name="EducationLevel" ColumnName="EducationLevel" />
+                <ScalarProperty Name="CertificationInfo" ColumnName="CertificationInfo" />
+                <ScalarProperty Name="AssociationMembership" ColumnName="AssociationMembership" />
+                <ScalarProperty Name="BusinessNumber" ColumnName="BusinessNumber" />
+                <ScalarProperty Name="BeekeepingPurposeType" ColumnName="BeekeepingPurposeType" />
+                <ScalarProperty Name="BeekeepingType" ColumnName="BeekeepingType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BeekeepingPurposeTypes">
+            <EntityTypeMapping TypeName="TOP4HoneyChainsDbModel.BeekeepingPurposeType">
+              <MappingFragment StoreEntitySet="BeekeepingPurposeTypes">
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="TypeTitle" ColumnName="TypeTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BeekeepingTypes">
+            <EntityTypeMapping TypeName="TOP4HoneyChainsDbModel.BeekeepingType">
+              <MappingFragment StoreEntitySet="BeekeepingTypes">
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="TypeTitle" ColumnName="TypeTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EducationLevels">
+            <EntityTypeMapping TypeName="TOP4HoneyChainsDbModel.EducationLevel">
+              <MappingFragment StoreEntitySet="EducationLevels">
+                <ScalarProperty Name="LevelId" ColumnName="LevelId" />
+                <ScalarProperty Name="LevelTitle" ColumnName="LevelTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FeedingMaterials">
+            <EntityTypeMapping TypeName="TOP4HoneyChainsDbModel.FeedingMaterial">
+              <MappingFragment StoreEntitySet="FeedingMaterials">
+                <ScalarProperty Name="FeedingMaterialId" ColumnName="FeedingMaterialId" />
+                <ScalarProperty Name="FeedingMaterialTitle" ColumnName="FeedingMaterialTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HoneyDistributionTypes">
+            <EntityTypeMapping TypeName="TOP4HoneyChainsDbModel.HoneyDistributionType">
+              <MappingFragment StoreEntitySet="HoneyDistributionTypes">
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="TypeTitle" ColumnName="TypeTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HoneyTestItems">
+            <EntityTypeMapping TypeName="TOP4HoneyChainsDbModel.HoneyTestItem">
+              <MappingFragment StoreEntitySet="HoneyTestItems">
+                <ScalarProperty Name="HoneyTestItemId" ColumnName="HoneyTestItemId" />
+                <ScalarProperty Name="HoneyTestItemTitle" ColumnName="HoneyTestItemTitle" />
+                <ScalarProperty Name="HoneyTestItemUnit" ColumnName="HoneyTestItemUnit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HoneyTests">
+            <EntityTypeMapping TypeName="TOP4HoneyChainsDbModel.HoneyTest">
+              <MappingFragment StoreEntitySet="HoneyTests">
+                <ScalarProperty Name="HoneyTestId" ColumnName="HoneyTestId" />
+                <ScalarProperty Name="ApiaryId" ColumnName="ApiaryId" />
+                <ScalarProperty Name="HoneyTestItemId" ColumnName="HoneyTestItemId" />
+                <ScalarProperty Name="HoneyTestItemValue" ColumnName="HoneyTestItemValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HoneyTypes">
+            <EntityTypeMapping TypeName="TOP4HoneyChainsDbModel.HoneyType">
+              <MappingFragment StoreEntitySet="HoneyTypes">
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="TypeTitle" ColumnName="TypeTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductionPeriods">
+            <EntityTypeMapping TypeName="TOP4HoneyChainsDbModel.ProductionPeriod">
+              <MappingFragment StoreEntitySet="ProductionPeriods">
+                <ScalarProperty Name="ProductionPeriodId" ColumnName="ProductionPeriodId" />
+                <ScalarProperty Name="ProductionPeriodTitle" ColumnName="ProductionPeriodTitle" />
+                <ScalarProperty Name="ProductionPeriodStartDate" ColumnName="ProductionPeriodStartDate" />
+                <ScalarProperty Name="ProductionPeriodEndDate" ColumnName="ProductionPeriodEndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
