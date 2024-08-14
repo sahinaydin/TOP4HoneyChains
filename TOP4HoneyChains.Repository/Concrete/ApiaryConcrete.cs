@@ -75,6 +75,11 @@ namespace TOP4HoneyChains.Repository.Concrete
             }
         }
 
+        public void Insert(object apiary)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(Apiary entity)
         {
             using (var db = new TOP4HoneyChainsDbEntities())

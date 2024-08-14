@@ -10,7 +10,7 @@ using TOP4HoneyChains.Repository.Abstract;
 
 namespace TOP4HoneyChains.Repository.Concrete
 {
-    internal class BeehiveBuildingMaterialsConcrete : IDatabaseBusiness<BeehiveBuildingMaterial>
+    public class BeehiveBuildingMaterialsConcrete : IDatabaseBusiness<BeehiveBuildingMaterial>
     {
         public void Delete(BeehiveBuildingMaterial entity)
         {
@@ -26,7 +26,7 @@ namespace TOP4HoneyChains.Repository.Concrete
         {
             using (var db = new TOP4HoneyChainsDbEntities())
             {
-                var entity =  db.BeehiveBuildingMaterials.Find(id);
+                var entity = db.BeehiveBuildingMaterials.Find(id);
                 db.BeehiveBuildingMaterials.Attach(entity);
                 db.Entry(entity).State = EntityState.Deleted;
                 db.SaveChanges();
