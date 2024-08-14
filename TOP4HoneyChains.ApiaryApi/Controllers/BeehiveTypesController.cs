@@ -9,16 +9,16 @@ using TOP4HoneyChains.Repository.Concrete;
 
 namespace TOP4HoneyChains.ApiaryApi.Controllers
 {
-    public class BeehiveTypesController : ApiController
-    {
-        BeehiveTypesConcrete btc = new BeehiveTypesConcrete();
+	public class BeehiveTypesController : ApiController
+	{
+		BeehiveTypesConcrete btc = new BeehiveTypesConcrete();
 
-        public IEnumerable<BeehiveType> Get()
-        {
-            return btc.GetAll();
-        }
-        public IHttpActionResult Get(int id)
-        {
+		public IEnumerable<BeehiveType> Get()
+		{
+			return btc.GetAll();
+		}
+		public IHttpActionResult Get(int id)
+		{
 			try
 			{
 				if (id != null)
@@ -32,11 +32,11 @@ namespace TOP4HoneyChains.ApiaryApi.Controllers
 			}
 			catch (Exception e)
 			{
-				return BadRequest(e.Message);
+				return BadRequest(ModelState);
 			}
 		}
-        public IHttpActionResult Post(BeehiveType model)
-        {
+		public IHttpActionResult Post(BeehiveType model)
+		{
 			try
 			{
 				if (ModelState.IsValid)
@@ -54,8 +54,8 @@ namespace TOP4HoneyChains.ApiaryApi.Controllers
 				return BadRequest(e.Message);
 			}
 		}
-        public IHttpActionResult Put(BeehiveType model)
-        {
+		public IHttpActionResult Put(BeehiveType model)
+		{
 			try
 			{
 				if (ModelState.IsValid)
@@ -73,8 +73,8 @@ namespace TOP4HoneyChains.ApiaryApi.Controllers
 				return BadRequest(e.Message);
 			}
 		}
-        public IHttpActionResult Delete(int id)
-        {
+		public IHttpActionResult Delete(int id)
+		{
 			try
 			{
 				if (id != null)
@@ -92,5 +92,5 @@ namespace TOP4HoneyChains.ApiaryApi.Controllers
 				return BadRequest(e.Message);
 			}
 		}
-    }
+	}
 }
