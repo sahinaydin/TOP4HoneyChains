@@ -19,50 +19,78 @@ namespace TOP4HoneyChains.ApiaryApi.Controllers
         }
         public IHttpActionResult Get(int id)
         {
-            if (ModelState.IsValid)
-            {
-                return Ok(bdc.GetById(id));
-            }
-            else
-            {
-                return NotFound();
-            }
-        }
+			try
+			{
+				if (id != null)
+				{
+					return Ok(bdc.GetById((int)id));
+				}
+				else
+				{
+					return NotFound();
+				}
+			}
+			catch (Exception e)
+			{
+				return BadRequest(e.Message);
+			}
+		}
         public IHttpActionResult Post(BeehiveDiseas model)
         {
-            if (ModelState.IsValid)
-            {
-                bdc.Insert(model);
-                return Ok();
-            }
-            else
-            {
-                return BadRequest(ModelState);
-            }
-        }
+			try
+			{
+				if (ModelState.IsValid)
+				{
+					bdc.Insert(model);
+					return Ok();
+				}
+				else
+				{
+					return BadRequest(ModelState);
+				}
+			}
+			catch (Exception e)
+			{
+				return BadRequest(e.Message);
+			}
+		}
         public IHttpActionResult Put(BeehiveDiseas model)
         {
-            if (ModelState.IsValid)
-            {
-                bdc.Update(model);
-                return Ok();
-            }
-            else
-            {
-                return BadRequest(ModelState);
-            }
-        }
+			try
+			{
+				if (ModelState.IsValid)
+				{
+					bdc.Update(model);
+					return Ok();
+				}
+				else
+				{
+					return BadRequest(ModelState);
+				}
+			}
+			catch (Exception e)
+			{
+				return BadRequest(e.Message);
+			}
+		}
         public IHttpActionResult Delete(int id)
         {
-            if (ModelState.IsValid)
-            {
-                bdc.Delete(id);
-                return Ok();
-            }
-            else
-            {
-                return BadRequest(ModelState);
-            }
-        }
+			try
+			{
+				if (id != null)
+				{
+					bdc.Delete((int)id);
+					return Ok();
+				}
+				else
+				{
+					return BadRequest(ModelState);
+				}
+			}
+			catch (Exception e)
+			{
+				return BadRequest(e.Message);
+			}
+		}
     }
 }

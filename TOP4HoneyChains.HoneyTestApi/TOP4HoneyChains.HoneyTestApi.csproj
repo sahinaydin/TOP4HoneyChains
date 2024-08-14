@@ -310,6 +310,16 @@
     <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.0.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TOP4HoneyChains.Entities\TOP4HoneyChains.Entities.csproj">
+      <Project>{85a173f8-e99c-41f2-a98f-23c7d4e3af52}</Project>
+      <Name>TOP4HoneyChains.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TOP4HoneyChains.Repository\TOP4HoneyChains.Repository.csproj">
+      <Project>{12efe984-0e33-4f18-b706-f1042d03ccda}</Project>
+      <Name>TOP4HoneyChains.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
