@@ -84,5 +84,13 @@ namespace TOP4HoneyChains.Repository.Concrete
                 db.SaveChanges();
             }
         }
+
+        public Beekeeper GetByIdentityNumber(string identitynumber)
+        {
+            using (var db = new TOP4HoneyChainsDbEntities())
+            {
+                return db.Beekeepers.Where(b=>b.IdentityNumber == identitynumber).FirstOrDefault();
+            }
+        }
     }
 }

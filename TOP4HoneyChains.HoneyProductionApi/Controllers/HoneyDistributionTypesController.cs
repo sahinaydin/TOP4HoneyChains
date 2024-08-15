@@ -7,7 +7,7 @@ using System.Web.Http;
 using TOP4HoneyChains.Entities;
 using TOP4HoneyChains.Repository.Concrete;
 
-namespace TOP4HoneyChains.HoneyTestApi.Controllers
+namespace TOP4HoneyChains.HoneyProductionApi.Controllers
 {
     public class HoneyDistributionTypesController : ApiController
     {
@@ -35,7 +35,7 @@ namespace TOP4HoneyChains.HoneyTestApi.Controllers
                 return BadRequest(e.Message);
             }
         }
-        public IHttpActionResult Post (HoneyDistributionType model)
+        public IHttpActionResult Post(HoneyDistributionType model)
         {
             try
             {
@@ -79,7 +79,8 @@ namespace TOP4HoneyChains.HoneyTestApi.Controllers
             {
                 if (id != null)
                 {
-                    return Ok(dtc.GetById((int)id));
+                    dtc.Delete((int)id);
+                    return Ok();
                 }
                 else
                 {

@@ -164,6 +164,8 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\ApiaryHoneyProductionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HoneyDistributionTypesController.cs" />
+    <Compile Include="Controllers\HoneyTypesController.cs" />
     <Compile Include="Controllers\ProductionPeriodsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">

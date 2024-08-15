@@ -79,7 +79,8 @@ namespace TOP4HoneyChains.HoneyTestApi.Controllers
             {
                 if (id != null)
                 {
-                    return Ok(htc.GetById((int)id));
+                    htc.Delete((int)id);
+                    return Ok();
                 }
                 else
                 {

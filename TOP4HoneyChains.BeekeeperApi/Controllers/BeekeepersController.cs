@@ -17,74 +17,17 @@ namespace TOP4HoneyChains.BeekeeperApi.Controllers
         {
             return bc.GetAll();
         }
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult Get(string identitynumber)
         {
 			try
 			{
-				if (id != null)
+				if (identitynumber != null)
 				{
-					return Ok(bc.GetById((int)id));
+					return Ok(bc.GetByIdentityNumber(identitynumber));
 				}
 				else
 				{
 					return NotFound();
-				}
-			}
-			catch (Exception e)
-			{
-				return BadRequest(e.Message);
-			}
-		}
-        public IHttpActionResult Post(Beekeeper model)
-        {
-            try
-			{
-				if (ModelState.IsValid)
-				{
-					bc.Insert(model);
-					return Ok();
-				}
-				else
-				{
-					return BadRequest(ModelState);
-				}
-			}
-			catch (Exception e)
-			{
-				return BadRequest(e.Message);
-			}
-		}
-        public IHttpActionResult Put(Beekeeper model)
-        {
-			try
-			{
-				if (ModelState.IsValid)
-				{
-					bc.Update(model);
-					return Ok();
-				}
-				else
-				{
-					return BadRequest(ModelState);
-				}
-			}
-			catch (Exception e)
-			{
-				return BadRequest(e.Message);
-			}
-		}
-        public IHttpActionResult Delete(int id)
-        {
-			try
-			{
-				if (id != null)
-				{
-					bc.Delete((int)id);
-					return Ok();
-				}
-				else
-				{
-					return BadRequest(ModelState);
 				}
 			}
 			catch (Exception e)

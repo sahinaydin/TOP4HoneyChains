@@ -163,10 +163,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\HoneyDistributionTypesController.cs" />
     <Compile Include="Controllers\HoneyTestItemsController.cs" />
     <Compile Include="Controllers\HoneyTestsController.cs" />
-    <Compile Include="Controllers\HoneyTypesController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
