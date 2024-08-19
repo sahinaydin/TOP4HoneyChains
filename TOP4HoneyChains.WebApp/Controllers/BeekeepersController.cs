@@ -10,6 +10,7 @@ using TOP4HoneyChains.Entities;
 
 namespace TOP4HoneyChains.WebApp.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class BeekeepersController : Controller
     {
         const string baseurl = @"https://beekeepersapi.intalalab.net/";

@@ -11,6 +11,12 @@ namespace TOP4HoneyChains.WebApp.Controllers
     public class AccountController : Controller
     {
 
+        public ActionResult LogOff()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("LogOn", "Account");
+        }
+
         public ActionResult LogOn()
         {
             return View();
