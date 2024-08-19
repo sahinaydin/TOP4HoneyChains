@@ -17,7 +17,7 @@ namespace TOP4HoneyChains.BeekeeperApi.Controllers
 		{
 			return elc.GetAll();
 		}
-		public IHttpActionResult Get(int id)
+		public IHttpActionResult Get(int? id)
 		{
 			try
 			{
@@ -73,7 +73,7 @@ namespace TOP4HoneyChains.BeekeeperApi.Controllers
 				return BadRequest(e.Message);
 			}
 		}
-		public IHttpActionResult Delete(int id)
+		public IHttpActionResult Delete(int? id)
 		{
 			try
 			{
