@@ -35,5 +35,63 @@ namespace TOP4HoneyChains.BeekeeperApi.Controllers
 				return BadRequest(e.Message);
 			}
 		}
-    }
+
+		public IHttpActionResult Post(Beekeeper model)
+		{
+			try
+			{
+				if (ModelState.IsValid)
+				{
+					bc.Insert(model);
+					return Ok();
+				}
+				else
+				{
+					return BadRequest(ModelState);
+				}
+			}
+			catch (Exception e)
+			{
+				return BadRequest(e.Message);
+			}
+		}
+		public IHttpActionResult Put(Beekeeper model)
+		{
+			try
+			{
+				if (ModelState.IsValid)
+				{
+					bc.Update(model);
+					return Ok();
+				}
+				else
+				{
+					return BadRequest(ModelState);
+				}
+			}
+			catch (Exception e)
+			{
+				return BadRequest(e.Message);
+			}
+		}
+		public IHttpActionResult Delete(int? id)
+		{
+			try
+			{
+				if (id != null)
+				{
+					bc.Delete((int)id);
+					return Ok();
+				}
+				else
+				{
+					return BadRequest(ModelState);
+				}
+			}
+			catch (Exception e)
+			{
+				return BadRequest(e.Message);
+			}
+		}
+	}
 }

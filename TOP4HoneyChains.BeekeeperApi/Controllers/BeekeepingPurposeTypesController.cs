@@ -73,7 +73,7 @@ namespace TOP4HoneyChains.BeekeeperApi.Controllers
 				return BadRequest(e.Message);
 			}
 		}
-        public IHttpActionResult Delete(int id)
+        public IHttpActionResult Delete(int?a id)
         {
 			try
 			{
