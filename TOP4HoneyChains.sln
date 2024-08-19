@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{038654A7-D80
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TOP4HoneyChains.WebApp", "TOP4HoneyChains.WebApp\TOP4HoneyChains.WebApp.csproj", "{A78B6812-D3DC-4780-B1BF-C10E45DF27A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TOP4HoneyChains.Domain", "TOP4HoneyChains.Domain\TOP4HoneyChains.Domain.csproj", "{42D516C5-3C28-4326-94F2-5CD219D5BD47}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{A78B6812-D3DC-4780-B1BF-C10E45DF27A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A78B6812-D3DC-4780-B1BF-C10E45DF27A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A78B6812-D3DC-4780-B1BF-C10E45DF27A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42D516C5-3C28-4326-94F2-5CD219D5BD47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42D516C5-3C28-4326-94F2-5CD219D5BD47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42D516C5-3C28-4326-94F2-5CD219D5BD47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42D516C5-3C28-4326-94F2-5CD219D5BD47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,6 +77,7 @@ Global
 		{A0EC0A49-302E-4C25-8128-42FC6EA65C7E} = {F5AEA500-3E3B-4053-93A6-97EBCD580DC9}
 		{12EFE984-0E33-4F18-B706-F1042D03CCDA} = {EC74D575-48DD-4279-BC3B-08F0BBC14555}
 		{A78B6812-D3DC-4780-B1BF-C10E45DF27A7} = {038654A7-D809-4915-A0DF-901B7816BBC1}
+		{42D516C5-3C28-4326-94F2-5CD219D5BD47} = {EC74D575-48DD-4279-BC3B-08F0BBC14555}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {73F3729D-D863-4C6B-B50A-FC0160527CB7}
