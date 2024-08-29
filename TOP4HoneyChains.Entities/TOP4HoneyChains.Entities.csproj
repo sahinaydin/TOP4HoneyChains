@@ -105,6 +105,7 @@
     <Compile Include="HoneyType.cs">
       <DependentUpon>TOP4HoneyChainsModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="MVVM\UserProfile.cs" />
     <Compile Include="ProductionPeriod.cs">
       <DependentUpon>TOP4HoneyChainsModels.tt</DependentUpon>
     </Compile>

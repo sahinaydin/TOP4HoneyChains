@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using TOP4HoneyChains.Entities;
+using TOP4HoneyChains.Entities.MVVM;
 
 namespace TOP4HoneyChains.WebApp.Controllers
 {
@@ -124,6 +125,19 @@ namespace TOP4HoneyChains.WebApp.Controllers
         public ActionResult ChangePasswordSuccess()
         {
             return View();
+        }
+
+        [Authorize]
+        public ActionResult UserProfile()
+        {
+            var user = Membership.GetUser(User.Identity.Name);
+            var up = new UserProfile();
+            up.UserName = User.Identity.Name;
+            up.CreateDate = user.CreationDate;
+            up.Email = user.Email;
+            up.LastActitiyDate=user.LastActivityDate;
+            up.Roles = Roles.GetRolesForUser(User.Identity.Name);
+            return View(up);
         }
 
         #region Status Codes

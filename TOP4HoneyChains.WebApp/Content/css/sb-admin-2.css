@@ -1890,9 +1890,14 @@ pre code {
   opacity: 1;
 }
 
-.form-control:disabled, .form-control[readonly] {
-  background-color: #eaecf4;
-  opacity: 1;
+.form-control:disabled {
+    background-color: #9C94B4;
+    opacity: 1;
+}
+
+.form-control[readonly] {
+    background-color: #F9F9F9;
+    opacity: 1;
 }
 
 input[type="date"].form-control,
